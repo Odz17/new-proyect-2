@@ -9,7 +9,6 @@ const placesSchema = new Schema(
     },
     location: {
       type: String,
-      unique: true,
       lowercase: true,
       trim: true
     },
@@ -26,6 +25,6 @@ const placesSchema = new Schema(
   }
 );
 
-// const Places = model("Places", placesSchema);
+
 
 module.exports = model('Places', placesSchema);
