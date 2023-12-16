@@ -1,12 +1,82 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #ecf5e3; /* Verde claro para el fondo */
 }
 
-a {
-  color: #00b7ff;
+header {
+  background-color: #2e7d32; /* Verde oscuro para el encabezado */
+  color: #fff;
+  padding: 10px;
+  text-align: center;
 }
 
-h1 {
-  color: 15px;
+nav {
+  background-color: #388e3c; /* Verde medio para la barra de navegación */
+  padding: 10px;
+  text-align: center;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+  margin: 0 10px;
+  font-weight: bold;
+}
+
+.container {
+  width: 80%;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-container {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #388e3c; /* Verde medio para el texto del formulario */
+}
+
+input, button {
+  margin-bottom: 16px;
+  padding: 10px;
+  border: 1px solid #388e3c; /* Verde medio para el borde del formulario */
+  border-radius: 4px;
+}
+
+button {
+  background-color: #2e7d32; /* Verde oscuro para el botón del formulario */
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #4caf50; /* Verde más claro para el estado hover del botón */
+}
+
+.profile-info {
+  text-align: center;
+}
+
+.logout-btn {
+  background-color: #d2d94f;
+  color: #fff;
+}
+
+.logout-btn:hover {
+  background-color: #bec92c;
 }
