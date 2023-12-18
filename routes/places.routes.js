@@ -6,7 +6,8 @@ const Place = require('../models/Place.model');
 router.get('/', (req, res) => {
     Place.find()
     .then( allPlaces => {
-        res.json(allPlaces);
+      res.render('/places')
+        // res.json(allPlaces);
     });
 });
 
@@ -29,7 +30,8 @@ router.get("/:id", (req, res) => {
     
     Place.findById(id)
       .then( (placeFromDB) => {
-        res.json(placeFromDB);
+
+        // res.json(placeFromDB);
       })
       .catch((error) => {
         res.status(404).json({ error: "Place not found" });

@@ -1,0 +1,26 @@
+<h2>
+  Edit Place {{ title }}
+</h2>
+
+<form action="/place/edit" method="post">
+
+  <input type="hidden" name="id" value="{{ id }}">
+
+  <label> Name:
+    <input type="text" name="title" value="{{ name }}" />
+  </label>
+
+  <label> Location:
+    <input type="text" name="location" value="{{ location }}" />
+  </label>
+
+  <label> Description:
+    <textarea name="description" value=">{{ description }}</textarea>
+  </label>
+
+  <label> Image:
+    <input type="number" name="Image" value="{{  }}" />
+  </label>
+
+  <button type="submit"> Edit </button>
+</form>
