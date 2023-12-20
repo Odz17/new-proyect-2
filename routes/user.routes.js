@@ -12,9 +12,12 @@ const isLoggedIn = require("../middleware/isLoggedIn");
 
 
 router.get("/myprofile", isLoggedIn, (req, res) => {
-    const { currentUser } = req.session; 
-        // console.log(currentUser)
-    res.render("user/user-profile", currentUser)
+    const { currentUser } = req.session;
+    User.findById(currentUser._id)
+      .then(userFromDB => {
+        res.render("user/user-profile", { user: userFromDB });
+      }) 
+        
   })
 
   router.get("/myprofile/edit", isLoggedIn, (req, res) => {
@@ -36,6 +39,7 @@ router.get("/myprofile", isLoggedIn, (req, res) => {
   
     User.findByIdAndUpdate(currentUser._id, { username }, { new: true })
       .then(updatedUser => {
+        // res.send(updatedUser)
         res.redirect("/myprofile");
       })
       .catch(error => {

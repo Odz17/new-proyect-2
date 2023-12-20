@@ -14,6 +14,7 @@ const placesSchema = new Schema(
     },
     image: {
       type: String,
+      trim: true,
     },
     description: {
         type: String,

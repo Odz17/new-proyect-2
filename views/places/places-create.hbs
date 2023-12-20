@@ -1,0 +1,22 @@
+<h1>Create a new Place</h1>
+
+<form action="/places/place-create" method="post">
+
+  <label> Title:
+    <input type="text" name="title" />
+  </label>
+
+  <label> Location:
+    <input type="text" name="location" />
+  </label>
+
+  <label> Description:
+    <textarea name="description" cols="30" rows="4">Un muy buen lugar</textarea>
+  </label>
+
+  <label> Image:
+    <input type="file" name="image"/>
+  </label>
+
+  <button type="submit">Create</button>
+</form>

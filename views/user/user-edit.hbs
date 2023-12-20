@@ -1,0 +1,17 @@
+
+
+  <h2>Welcome, {{ username }} {{ user.username }}!</h2>
+
+  <p>This is your profile page my friend!</p>
+
+  <form action="/myprofile/edit" method="post">
+
+  <input type="hidden" name="id" value="{{ id }}">
+    
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" value="{{user.username}}" required>
+
+    <button type="submit">Save Changes</button>
+</form>
+
+<a href="/myProfile/{{id}}">Cancel</a>
