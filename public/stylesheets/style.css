@@ -2,7 +2,9 @@ body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #ecf5e3; /* Verde claro para el fondo */
+  overflow: hidden;
+  background: url('https://www.ofertasparaviajar.com/wp-content/uploads/2016/08/top100-gifts-animados-viaje-1.gif') no-repeat center center fixed;
+  background-size: cover
 }
 
 header {
@@ -33,6 +35,9 @@ nav a {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .form-container {
@@ -43,12 +48,13 @@ nav a {
 form {
   display: flex;
   flex-direction: column;
+  align-items: stretch;
 }
 
 label {
   margin-bottom: 8px;
   font-weight: bold;
-  color: #388e3c; /* Verde medio para el texto del formulario */
+  color: #030303; /* Verde medio para el texto del formulario */
 }
 
 input, button {

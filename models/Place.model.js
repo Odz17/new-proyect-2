@@ -19,7 +19,15 @@ const placesSchema = new Schema(
     description: {
         type: String,
         trim: true
-    }
+    },
+    author: {
+      type: String,
+      trim: true
+    },
+    rating: {
+      type: Number,
+      trim: true
+    },
   },
   {
     timestamps: true

@@ -19,13 +19,15 @@ router.post("/places-create", (req, res, next) => {
     title: title,
     location: location,
     image: image,
-    description: description
+    description: description,
+    author: author,
+    rating: rating,
   })
     .then((data) => {
-      res.redirect('/places'); 
+      res.redirect('/'); 
     })
     .catch(err => {
-      res.json(err);
+      res.status(404).json({ error: "Place not created" });
     });
 });
 
@@ -51,7 +53,7 @@ router.post('/:id/edit', (req, res) => {
   const { id } = req.params;
   const { name, location, image, description } = req.body;
   
-  Place.findByIdAndUpdate(id, { name, location, image, description }, { new: true })
+  Place.findByIdAndUpdate(id, { name, location, image, description, author, rating }, { new: true })
   .then( (updatedplaceFromDB) => {
     res.json(updatedplaceFromDB)
   });
