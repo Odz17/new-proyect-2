@@ -2,11 +2,22 @@
   form {
     max-width: 400px; /* Establece el ancho máximo del formulario */
     margin: 0 auto; /* Centra el formulario horizontalmente */
+    text-align: left; /* Alinea el texto a la izquierda */
   }
 
   label {
     display: block; /* Hace que cada etiqueta esté en una línea separada */
     margin-bottom: 10px; /* Espacio entre las etiquetas */
+  }
+
+  label span {
+    display: inline-block; /* Alinea el texto y los elementos de entrada en la misma línea */
+    width: 120px; /* Ancho fijo para las etiquetas, ajusta según sea necesario */
+  }
+
+  input, textarea, select {
+    width: 100%; /* Hace que los elementos de entrada ocupen el 100% del ancho disponible */
+    box-sizing: border-box; /* Incluye el relleno y el borde en el ancho total */
   }
 
   button {
@@ -18,27 +29,33 @@
 <h1>Create a new Place</h1>
 
 <form action="/places/create" method="POST" enctype="multipart/form-data">
-  <label> Name:
+  <label> 
+    <span>Name:</span>
     <input type="text" name="title" />
   </label>
 
-  <label> Location:
+  <label> 
+    <span>Location:</span>
     <input type="text" name="location" />
   </label>
 
-  <label> Image:
+  <label> 
+    <span>Image:</span>
     <input type="file" name="image" />
   </label>
 
-  <label> Description:
+  <label> 
+    <span>Description:</span>
     <textarea name="description" cols="30" rows="4">description</textarea>
   </label>
 
-  <label> Author:
+  <label> 
+    <span>Author:</span>
     <input type="text" name="author" />
   </label>
 
-  <label> Rating:
+  <label> 
+    <span>Rating:</span>
     <input type="text" name="rating" />
   </label>
 
