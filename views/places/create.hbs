@@ -1,9 +1,8 @@
 <h1>Create a new Place</h1>
 
-<form action="/places/place-create" method="post">
-
+<form action="/places/create" method="POST" enctype="multipart/form-data">
   <label> Name:
-    <input type="text" name="name" />
+    <input type="text" name="title" />
   </label>
 
   <label> Location:
@@ -11,7 +10,7 @@
   </label>
 
   <label> Description:
-    <textarea name="description" cols="30" rows="4">Un muy buen lugar</textarea>
+    <textarea name="description" cols="30" rows="4">description</textarea>
   </label>
 
   <label> Image:
@@ -19,11 +18,11 @@
   </label>
 
   <label> author:
-    <input type="text" name="image"/>
+    <input type="text" name="author"/>
   </label>
 
   <label> rating:
-    <input type="text" name="image"/>
+    <input type="text" name="rating"/>
   </label>
 
   <button type="submit">Create</button>

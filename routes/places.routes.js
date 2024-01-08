@@ -2,18 +2,20 @@ const router = require("express").Router();
 const { model } = require("mongoose");
 const Place = require('../models/Place.model');
 
-router.get('/', (req, res) => {
+router.get('/list', (req, res) => {
   Place.find().then(data => {
-    res.render('places/places-list', { places: data }); 
+    res.render('places/list', { places: data }); 
   });
 });
 
-router.get('/places-create', (req, res) => {
-  res.render('places/places-create');
+
+
+router.get('/create', (req, res) => {
+  res.render('places/create');
 });
 
-router.post("/places-create", (req, res, next) => {
-  const { title, location, image, description } = req.body;
+router.post("/places/create", (req, res, next) => {
+  const { title, location, image, description, author, rating } = req.body;
 
   Place.create({
     title: title,
@@ -24,7 +26,8 @@ router.post("/places-create", (req, res, next) => {
     rating: rating,
   })
     .then((data) => {
-      res.redirect('/'); 
+      res.redirect('/places/list');
+ 
     })
     .catch(err => {
       res.status(404).json({ error: "Place not created" });
@@ -51,7 +54,7 @@ router.get("/:id", (req, res) => {
 router.post('/:id/edit', (req, res) => {
   
   const { id } = req.params;
-  const { name, location, image, description } = req.body;
+  const { title, location, image, description, author, rating } = req.body;
   
   Place.findByIdAndUpdate(id, { name, location, image, description, author, rating }, { new: true })
   .then( (updatedplaceFromDB) => {
