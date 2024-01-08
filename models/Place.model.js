@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 
 const placesSchema = new Schema(
   {
-    name: {
+    title: {
       type: String,
       trim: true,
       unique: true
@@ -34,6 +34,4 @@ const placesSchema = new Schema(
   }
 );
 
-
-
-module.exports = model('Places', placesSchema);
+module.exports = model('Place', placesSchema);

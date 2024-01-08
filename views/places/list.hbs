@@ -3,8 +3,9 @@
 <ul>
 {{#each places}}
   <li>
-    <a href="/list/{{this.id}}">
-      {{this.name}}
+    <a href="/list/{{this._id}}">
+      {{this.title}}
+      {{this.description}}
     </a>
   </li>
 {{/each}}
