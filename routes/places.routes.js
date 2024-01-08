@@ -2,6 +2,7 @@
 const router = require("express").Router();
 const { model } = require("mongoose");
 const Place = require('../models/Place.model');
+const fileUploader = require('../config/cloudinary.config');
 
 router.get('/list', (req, res) => {
   Place.find().then(data => {
@@ -15,29 +16,31 @@ router.get('/create', (req, res) => {
   res.render('places/create');
 });
 
-router.post("/create", (req, res, next) => {
-  console.log("Received POST request at /places/create");
-
-  const { title, location, image, description, author, rating } = req.body;
+router.post("/create", fileUploader.single('image'), (req, res, next) => {
+  //console.log("Received POST request at /places/create");
   
-  console.log("Received data:", { title, location, image, description, author, rating });
-
+  const { title, location, description, author, rating } = req.body;
+  const image = req.file ? req.file.path : undefined;
+  //console.log(req.body);
+  
+  //console.log("Received data:", { title, location, image, description, author, rating });
+  
   Place.create({
     title: title,
     location: location,
-    image: image,
+    image: req.file ? req.file.path : undefined,
     description: description,
     author: author,
     rating: rating,
   })
-    .then(() => {
-      console.log("Place created successfully");
-      res.redirect('/places/list');
-    })
-    .catch(error => {
-      console.error("Error creating place:", error);
-      next(error);
-    });
+  .then(() => {
+    console.log("Place created successfully");
+    res.redirect('/places/list');
+  })
+  .catch(error => {
+    console.error("Error creating place:", error);
+    next(error);
+  });
 });
 
 
@@ -49,8 +52,8 @@ router.get("/:id", (req, res) => {
   
   Place.findById(id)
   .then( (placeFromDB) => {
-    
-    // res.json(placeFromDB);
+    res.render('places/single', { placeFromDB });
+        // res.json(placeFromDB);
   })
   .catch((error) => {
     res.status(404).json({ error: "Place not found" });
@@ -65,12 +68,12 @@ router.post('/:id/edit', (req, res) => {
   const { title, location, image, description, author, rating } = req.body;
   
   Place.findByIdAndUpdate(id, { title, location, image, description, author, rating }, { new: true })
-    .then(updatedplaceFromDB => {
-      res.json(updatedplaceFromDB);
-    })
-    .catch(error => {
-      res.status(500).json({ error: "Internal Server Error" });
-    });
+  .then(updatedplaceFromDB => {
+    res.json(updatedplaceFromDB);
+  })
+  .catch(error => {
+    res.status(500).json({ error: "Internal Server Error" });
+  });
 });
 
 

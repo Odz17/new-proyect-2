@@ -1,20 +1,20 @@
 
-{{!-- event-single.hbs --}}
-<div class="container-single-event">
+
+{{!-- <div class="container-single-event"> --}}
     <h1 class="h1-single">{{ data.title }}</h1>
     <div class="content-wrapper">
         <div class="event-details">
             <label class="label-single">Created by:</label>
-            <p>{{ event.creator.username }}</p>
+            <p>{{ username }}</p>
             
             <label class="label-single">Date:</label>
-            <p>{{ date.date }}</p>
+            <p>{{ date }}</p>
 
             <label class="label-single">Location:</label>
-            <p>{{ data.location }}</p>
+            <p>{{ location }}</p>
 
             <label class="label-single">Links:</label>
-             <a href="{{data.links}}" class="link" target="_blank">{{event.links}}</a>
+             <a href="{{data.links}}" class="link" target="_blank">{{links}}</a>
 
             <label class="label-single">Notable Characters:</label>
             <p>{{ event.notableCharacters }}</p>
@@ -29,7 +29,7 @@
         </div>
 
         <div class="event-media">
-            <img src="{{ data.image }}" alt="imagen" class="event-image">
+            <img src="{{ image }}" alt="imagen" class="event-image">
 
 
             
@@ -38,4 +38,4 @@
         </div>
     </div>
 </div>
- 
+  --}}

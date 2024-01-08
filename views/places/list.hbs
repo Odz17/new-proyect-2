@@ -1,12 +1,14 @@
 <h2>Places list</h2>
 
 <ul>
-{{#each places}}
-  <li>
-    <a href="/list/{{this._id}}">
-      {{this.title}}
-      {{this.description}}
-    </a>
-  </li>
-{{/each}}
+  {{#each places}}
+    <li>
+      <a href="/places/{{_id}}">
+        {{ title }}
+        <div>
+          <img src="{{ image }}" alt="{{ title }}" width="100" height="100">
+        </div>
+      </a>
+    </li>
+  {{/each}}
 </ul>
