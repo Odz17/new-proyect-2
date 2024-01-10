@@ -9,7 +9,7 @@ body {
 
 header {
   background-color: #2e7d32; /* Verde oscuro para el encabezado */
-  color: #fff;
+  color: #050505;
   padding: 10px;
   text-align: center;
 }
@@ -21,7 +21,7 @@ nav {
 }
 
 nav a {
-  color: #fff;
+  color: #0b0a0a;
   text-decoration: none;
   padding: 10px;
   margin: 0 10px;
@@ -86,3 +86,6 @@ button:hover {
 .logout-btn:hover {
   background-color: #bec92c;
 }
+ #list {
+  text-align: center;
+ }

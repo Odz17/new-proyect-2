@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "prod": "NODE_ENV=production node server.js"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
@@ -19,7 +20,8 @@
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
     "multer-storage-cloudinary": "^4.0.0",
-    "serve-favicon": "^2.5.0"
+    "serve-favicon": "^2.5.0",
+    "vercel": "^33.0.2"
   },
   "devDependencies": {
     "nodemon": "^3.0.2"

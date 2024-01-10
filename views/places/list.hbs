@@ -1,13 +1,49 @@
-<h2>Places list</h2>
+
+<style>
+  ul {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Ajusta el espacio según sea necesario */
+  }
+
+  li {
+    text-align: center;
+  }
+
+  li a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  img {
+    width: 100%;
+    height: 150px; /* Ajusta la altura según sea necesario */
+    object-fit: cover; /* Mantiene la relación de aspecto y cubre todo el contenedor */
+  }
+
+  div {
+    padding: 10px;
+    background-color: #f0f6f1; /* Color de fondo al pasar el ratón */
+    color: #090909; /* Color del texto al pasar el ratón */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s, color 0.3s; /* Efecto de transición */
+  }
+
+  div:hover {
+    background-color: #4caf50; /* Color de fondo al pasar el ratón */
+    color: #fff; /* Color del texto al pasar el ratón */
+  }
+</style>
+
+<h2 id="list">Lista de Lugares</h2>
 
 <ul>
   {{#each places}}
     <li>
       <a href="/places/{{_id}}">
-        {{ title }}
-        <div>
-          <img src="{{ image }}" alt="{{ title }}" width="200" height="200">
-        </div>
+        <img src="{{ image }}" alt="{{ title }}">
+        <div>{{ title }}</div>
       </a>
     </li>
   {{/each}}
