@@ -11,19 +11,16 @@ router.get('/list', (req, res) => {
 });
 
 
-
 router.get('/create', (req, res) => {
   res.render('places/create');
 });
 
 router.post("/create", fileUploader.single('image'), (req, res, next) => {
-  //console.log("Received POST request at /places/create");
+  
   
   const { title, location, description, author, rating } = req.body;
   const image = req.file ? req.file.path : undefined;
-  //console.log(req.body);
   
-  //console.log("Received data:", { title, location, image, description, author, rating });
   
   Place.create({
     title: title,
@@ -34,7 +31,6 @@ router.post("/create", fileUploader.single('image'), (req, res, next) => {
     rating: rating,
   })
   .then(() => {
-    console.log("Place created successfully");
     res.redirect('/places/list');
   })
   .catch(error => {
@@ -46,7 +42,7 @@ router.post("/create", fileUploader.single('image'), (req, res, next) => {
 
 
 
-router.get("/:id", (req, res) => {
+router.get("/:id", fileUploader.single('image'), (req, res) => {
   
   const { id } = req.params;
   
@@ -61,15 +57,27 @@ router.get("/:id", (req, res) => {
   
 });
 
+router.get("/:_id/edit", fileUploader.single('image'), (req, res, next) => {
+  const { _id } = req.params;
+  Place.findById(_id)
+  .then(placeFromDB => {
+    res.render('places/edit',  placeFromDB );
+  })
+  .catch((error) => {
+    next(error);
+  })
+})
 
-router.post('/:id/edit', (req, res) => {
+router.post('/:_id/edit', fileUploader.single('image'), (req, res) => {
   
-  const { id } = req.params;
+  const { _id } = req.params;
   const { title, location, image, description, author, rating } = req.body;
   
-  Place.findByIdAndUpdate(id, { title, location, image, description, author, rating }, { new: true })
+  Place.findByIdAndUpdate(_id, { title, location, image, description, author, rating }, { new: true })
   .then(updatedplaceFromDB => {
-    res.json(updatedplaceFromDB);
+    const redirectus = `/places/${updatedplaceFromDB._id}`;
+      res.redirect(redirectus);
+    // res.json(updatedplaceFromDB);
   })
   .catch(error => {
     res.status(500).json({ error: "Internal Server Error" });
@@ -78,14 +86,22 @@ router.post('/:id/edit', (req, res) => {
 
 
 
-router.post('/:id/delete', (req, res) => {
-  const { id } = req.params;
-  
-  Place.findByIdAndDelete(id)
-  .then( () => {
-    res.json(`Place ${id} has been deleted`);
-  })
-})
+router.get('/:_id/delete', (req, res) => {
+  const { _id } = req.params;
+
+  Place.findByIdAndUpdate(_id)
+    .then(_id => {
+      return Place.findByIdAndDelete(_id)
+    })
+    .then(() => {
+      res.redirect('/places/list');
+      // res.json(`Place ${_id} has been deleted`);
+    })
+    .catch(error => {
+      res.status(500).json({ error: "Internal Server Error" });
+    });
+});
+
 
 
 module.exports = router;

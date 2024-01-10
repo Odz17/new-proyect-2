@@ -1,41 +1,37 @@
 
 
 {{!-- <div class="container-single-event"> --}}
-    <h1 class="h1-single">{{ title }}</h1>
+    <h1 class="h1-single">{{ placeFromDB.title }}</h1>
     <div class="content-wrapper">
         <div class="event-details">
             <label class="label-single">Created by:</label>
-            <p>{{ username }}</p>
+            <p>{{ placeFromDB.author }}</p>
             
-            <label class="label-single">Date:</label>
-            <p>{{ date }}</p>
+            <label class="label-single">Rate:</label>
+            <p>{{ placeFromDB.rating }}</p>
 
             <label class="label-single">Location:</label>
-            <p>{{ location }}</p>
+            <p>{{ placeFromDB.location }}</p>
 
-            <label class="label-single">Links:</label>
-             <a href="{{data.links}}" class="link" target="_blank">{{links}}</a>
+            <label class="label-single">description:</label>
+            <p>{{ placeFromDB.description }}</p>
 
-            <label class="label-single">Notable Characters:</label>
-            <p>{{ event.notableCharacters }}</p>
+           
             <!-- Enlaces -->
                      <div class="link-container-single">
-   
-                         <a href="/places/{{ data.id }}/delete" class="link-single">Delete</a>
-                         <a href="/places/{{ data.id }}/edit" class="link-single">Edit</a>
-                         <a href="/places/list" class="link-single">Back</a>
-                    </div> 
+                        <a href="/places/{{ placeFromDB._id }}/delete" class="link-single">Delete</a>
+                        <a href="/places/{{ placeFromDB._id }}/edit" class="link-single">Edit</a>
+                        <a href="/places/list" class="link-single">Back</a>
+                    </div>
                                                             
         </div>
 
-        <div class="event-media">
-            <img src="{{ image }}" alt="imagen" class="event-image">
+        <div>
 
-
-            
+            <img src="{{ placeFromDB.image }}" alt="image" width="200" height="200">  
 
 
         </div>
     </div>
 </div>
-  --}}
+ 
