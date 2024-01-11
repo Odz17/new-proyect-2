@@ -4,5 +4,6 @@ module.exports = (req, res, next) => {
     return res.redirect("/auth/login");
   }
 
+  res.locals.isLoggedIn = true;
   next();
 };

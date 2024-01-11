@@ -1,4 +1,8 @@
 body {
+  background-color: #ce9595;
+}
+
+body.home {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;

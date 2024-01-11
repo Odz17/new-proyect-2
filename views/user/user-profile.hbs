@@ -3,6 +3,12 @@
   <h2>Welcome,  {{ user.username }}!</h2>
 
   <p>This is your profile page my friend!</p>
+  {{#if user.userImage}}
+    <img src="{{ user.userImage }}" alt="profile image">
+  {{else}}
+    <img src="/images/guest.webp" alt="default image">
+  {{/if}}
+  
 
   <a href="/myprofile/edit">edit</a>
 

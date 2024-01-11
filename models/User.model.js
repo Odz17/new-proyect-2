@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose");
+const userImage = ('/images/guest.webp');
 
 // TODO: Please make sure you edit the User model to whatever makes sense in this case
 const userSchema = new Schema(
@@ -20,6 +21,10 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    profileImage: {
+      type: String,
+      default: userImage,
+    }
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`

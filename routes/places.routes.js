@@ -3,19 +3,21 @@ const router = require("express").Router();
 const { model } = require("mongoose");
 const Place = require('../models/Place.model');
 const fileUploader = require('../config/cloudinary.config');
+const isLoggedIn = require("../middleware/isLoggedIn");
+const sec = require("../middleware/security");
 
-router.get('/list', (req, res) => {
+router.get('/list', isLoggedIn, (req, res) => {
   Place.find().then(data => {
     res.render('places/list', { places: data }); 
   });
 });
 
 
-router.get('/create', (req, res) => {
+router.get('/create', isLoggedIn, (req, res) => {
   res.render('places/create');
 });
 
-router.post("/create", fileUploader.single('image'), (req, res, next) => {
+router.post("/create", isLoggedIn, fileUploader.single('image'), (req, res, next) => {
   
   
   const { title, location, description, author, rating } = req.body;
@@ -42,14 +44,17 @@ router.post("/create", fileUploader.single('image'), (req, res, next) => {
 
 
 
-router.get("/:id", fileUploader.single('image'), (req, res) => {
+router.get("/:id", isLoggedIn, fileUploader.single('image'), (req, res) => {
   
   const { id } = req.params;
   
   Place.findById(id)
+  // .populate('author', 'username')
   .then( (placeFromDB) => {
+
+    // const canEdit = place.author._id.toString() === req.session.currentUser._id;
     res.render('places/single', { placeFromDB });
-        // res.json(placeFromDB);
+        
   })
   .catch((error) => {
     res.status(404).json({ error: "Place not found" });
@@ -57,7 +62,7 @@ router.get("/:id", fileUploader.single('image'), (req, res) => {
   
 });
 
-router.get("/:_id/edit", fileUploader.single('image'), (req, res, next) => {
+router.get("/:_id/edit", isLoggedIn, fileUploader.single('image'), (req, res, next) => {
   const { _id } = req.params;
   Place.findById(_id)
   .then(placeFromDB => {
@@ -68,10 +73,11 @@ router.get("/:_id/edit", fileUploader.single('image'), (req, res, next) => {
   })
 })
 
-router.post('/:_id/edit', fileUploader.single('image'), (req, res) => {
+router.post('/:_id/edit', isLoggedIn, fileUploader.single('image'), (req, res) => {
   
   const { _id } = req.params;
   const { title, location, image, description, author, rating } = req.body;
+ 
   
   Place.findByIdAndUpdate(_id, { title, location, image, description, author, rating }, { new: true })
   .then(updatedplaceFromDB => {
@@ -86,7 +92,7 @@ router.post('/:_id/edit', fileUploader.single('image'), (req, res) => {
 
 
 
-router.get('/:_id/delete', (req, res) => {
+router.get('/:_id/delete', isLoggedIn, (req, res) => {
   const { _id } = req.params;
 
   Place.findByIdAndUpdate(_id)

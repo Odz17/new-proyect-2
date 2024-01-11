@@ -23,7 +23,8 @@ const placesSchema = new Schema(
     },
     author: {
       type: String,
-      trim: true
+      ref: 'User',
+      
     },
     rating: {
       type: Number,
