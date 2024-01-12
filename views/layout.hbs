@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>{{appTitle}}</title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
-    <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
 
   <body class="{{bodyClass}}">
@@ -15,25 +14,26 @@
         <h1>Travelers Blog</h1>
     </header>
 
-    <nav>
-        
-        
-        <a href="/">Home</a>
-        <a href="/places/create">Create a Place</a>
-        <a href="/places/list">List of Places</a>
-        <a href="/myprofile">Profile</a>
-        <a href="/auth/signup">Sign Up</a>
-        <a href="/auth/login">Login</a>
-        <a href="/auth/logout" class="logout-btn">Logout</a>
-        
-        
-    </nav>
+   <nav>
+  <a href="/">Home</a>
+  <a href="/places/create">Create a Place</a>
+  <a href="/places/list">List of Places</a>
 
-    <div class="container">
+    {{#if currentUser}}
+    <a href="/myprofile">Profile</a>
+    <a href="/auth/logout" class="logout-btn">Logout</a>
+    {{else}}
+    <a href="/auth/signup">Sign Up</a>
+    <a href="/auth/login">Login</a>
+    {{/if}}
+    
+</nav>
+
+    {{!-- <div class="container">
         <!-- Contenido de la página -->
         <h2>Ready for travel!!</h2>
         <!-- Agrega aquí el contenido de tu blog -->
-    </div>
+    </div> --}}
 
         {{{body}}}
 

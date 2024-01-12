@@ -92,4 +92,22 @@ button:hover {
 }
  #list {
   text-align: center;
+}
+ #create {
+  text-align: center;
  }
+ .profile-container {
+  display: flex;
+  align-items: center;
+}
+
+.profile-info {
+  margin-right: 20px; /* Ajusta el espacio entre la información y la imagen según sea necesario */
+}
+
+.profile-image {
+  width: 100px; /* Ajusta el tamaño de la imagen según sea necesario */
+  height: 100px;
+  border-radius: 50%; /* Aplica un borde redondeado para la imagen */
+  object-fit: cover; /* Evita que la imagen se distorsione al cambiar su tamaño */
+}

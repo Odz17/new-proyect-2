@@ -1,15 +1,16 @@
+<h2>Welcome, {{ user.username }}!</h2>
 
+<div class="profile-container">
+  <div class="profile-info">
+    <p>This is your profile page, my friend!</p>
+  </div>
 
-  <h2>Welcome,  {{ user.username }}!</h2>
-
-  <p>This is your profile page my friend!</p>
   {{#if user.userImage}}
-    <img src="{{ user.userImage }}" alt="profile image">
+    <img class="profile-image" src="{{ user.userImage }}" alt="profile image">
   {{else}}
-    <img src="/images/guest.webp" alt="default image">
+    <img class="profile-image" src="/images/guest.webp" alt="default image">
   {{/if}}
-  
+</div>
 
-  <a href="/myprofile/edit">edit</a>
-
-<a href="/myProfile/{{id}}">Cancel</a>
+<a href="/myprofile/edit">Edit</a>
+<a href="/">Cancel</a>

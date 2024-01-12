@@ -1,7 +1,18 @@
 const express = require("express");
 const router = express.Router();
+const multer = require("multer");
+const path = require("path");
 
-const mongoose = require("mongoose");
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'public/uploads'); 
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + path.extname(file.originalname)); 
+  }
+});
+
+const upload = multer({ storage: storage });
 
 // Require the User model in order to interact with the database
 const User = require("../models/User.model");
@@ -22,7 +33,6 @@ router.get("/myprofile", isLoggedIn, (req, res) => {
 
   router.get("/myprofile/edit", isLoggedIn, (req, res) => {
     const { currentUser } = req.session;
-  
     User.findById(currentUser._id)
       .then(userFromDB => {
         res.render("user/user-edit", { user: userFromDB });
@@ -33,13 +43,13 @@ router.get("/myprofile", isLoggedIn, (req, res) => {
       });
   });
   
-  router.post("/myprofile/edit", (req, res) => {
+  router.post("/myprofile/edit", isLoggedIn, upload.single('profileImage'), (req, res) => {
     const { currentUser } = req.session;
     const { username } = req.body;
+    const newImage = req.file ? `/uploads/${req.file.filename}` : currentUser.userImage;
   
-    User.findByIdAndUpdate(currentUser._id, { username }, { new: true })
+    User.findByIdAndUpdate(currentUser._id, { username, userImage: newImage }, { new: true })
       .then(updatedUser => {
-        // res.send(updatedUser)
         res.redirect("/myprofile");
       })
       .catch(error => {
