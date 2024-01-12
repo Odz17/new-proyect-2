@@ -12,14 +12,14 @@ body.home {
 }
 
 header {
-  /* background-color: #1ed9df; Verde oscuro para el encabezado */
+  
   color: #050505;
   padding: 10px;
   text-align: center;
 }
 
 nav {
-  background-color: #f1f6f7; /* Verde medio para la barra de navegación */
+  background-color: #f1f6f7; 
   padding: 10px;
   text-align: center;
 }
@@ -58,18 +58,18 @@ form {
 label {
   margin-bottom: 8px;
   font-weight: bold;
-  color: #030303; /* Verde medio para el texto del formulario */
+  color: #030303; 
 }
 
 input, button {
   margin-bottom: 16px;
   padding: 10px;
-  border: 1px solid #0c0c0c; /* Verde medio para el borde del formulario */
+  border: 1px solid #0c0c0c; 
   border-radius: 4px;
 }
 
 button {
-  background-color: #0c0c0c; /* Verde oscuro para el botón del formulario */
+  background-color: #0c0c0c; 
   color: #fff;
   cursor: pointer;
 }
@@ -99,12 +99,12 @@ button {
 }
 
 .profile-info {
-  margin-right: 20px; /* Ajusta el espacio entre la información y la imagen según sea necesario */
+  margin-right: 20px; 
 }
 
 .profile-image {
-  width: 100px; /* Ajusta el tamaño de la imagen según sea necesario */
+  width: 100px; 
   height: 100px;
-  border-radius: 50%; /* Aplica un borde redondeado para la imagen */
-  object-fit: cover; /* Evita que la imagen se distorsione al cambiar su tamaño */
+  border-radius: 50%; 
+  object-fit: cover; 
 }

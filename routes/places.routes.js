@@ -83,7 +83,7 @@ router.post('/:_id/edit', isLoggedIn, fileUploader.single('image'), (req, res) =
   .then(updatedplaceFromDB => {
     const redirectus = `/places/${updatedplaceFromDB._id}`;
       res.redirect(redirectus);
-    // res.json(updatedplaceFromDB);
+    
   })
   .catch(error => {
     res.status(500).json({ error: "Internal Server Error" });
@@ -101,7 +101,7 @@ router.get('/:_id/delete', isLoggedIn, (req, res) => {
     })
     .then(() => {
       res.redirect('/places/list');
-      // res.json(`Place ${_id} has been deleted`);
+      
     })
     .catch(error => {
       res.status(500).json({ error: "Internal Server Error" });

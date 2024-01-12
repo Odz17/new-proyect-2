@@ -9,19 +9,19 @@
     display: inline-block;
     padding: 10px 20px;
     text-decoration: none;
-    color: #0b0a0a; /* Color del texto en los botones */
-    background-color: #fff; /* Color de fondo de los botones */
-    border: 1px solid #0b0a0a; /* Borde de los botones */
-    border-radius: 5px; /* Borde redondeado de los botones */
-    transition: background-color 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s; /* Agregado el efecto de volumen con box-shadow */
+    color: #0b0a0a; 
+    background-color: #fff; 
+    border: 1px solid #0b0a0a; 
+    border-radius: 5px; 
+    transition: background-color 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s; 
     margin-left: 10px;
   }
 
   .link-single:hover {
-    background-color: #f1f6f7; /* Color de fondo al pasar el ratón sobre los botones */
-    color: #0b0a0a; /* Cambia el color del texto al pasar el ratón sobre los botones */
-    transform: scale(1.05); /* Efecto de aumento de tamaño al pasar el ratón sobre los botones */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Agregado el efecto de volumen con box-shadow al pasar el ratón */
+    background-color: #f1f6f7; 
+    color: #0b0a0a; 
+    transform: scale(1.05); 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
   }
 </style>
 
@@ -42,20 +42,15 @@
             <p>{{ placeFromDB.description }}</p>
 
            
-            <!-- Enlaces -->
+            
                     <div class="link-container-single">
                     <a href="/places/{{ placeFromDB._id }}/delete" class="link-single">Delete</a>
                     <a href="/places/{{ placeFromDB._id }}/edit" class="link-single">Edit</a>
                     <a href="/places/list" class="link-single">Back</a>
-</div>
-                                                            
-        </div>
-
+</div>                                                         
+    </div>
         <div>
-
-            <img src="{{ placeFromDB.image }}" alt="image" width="200" height="200">  
-
-
+            <img src="{{ placeFromDB.image }}" alt="image" width="200" height="200">
         </div>
     </div>
 </div>
