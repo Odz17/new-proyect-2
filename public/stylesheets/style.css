@@ -1,5 +1,5 @@
 body {
-  background-color: #ce9595;
+  background-color: #0b5658;
 }
 
 body.home {
@@ -12,14 +12,14 @@ body.home {
 }
 
 header {
-  background-color: #2e7d32; /* Verde oscuro para el encabezado */
+  /* background-color: #1ed9df; Verde oscuro para el encabezado */
   color: #050505;
   padding: 10px;
   text-align: center;
 }
 
 nav {
-  background-color: #388e3c; /* Verde medio para la barra de navegación */
+  background-color: #f1f6f7; /* Verde medio para la barra de navegación */
   padding: 10px;
   text-align: center;
 }
@@ -64,19 +64,16 @@ label {
 input, button {
   margin-bottom: 16px;
   padding: 10px;
-  border: 1px solid #388e3c; /* Verde medio para el borde del formulario */
+  border: 1px solid #0c0c0c; /* Verde medio para el borde del formulario */
   border-radius: 4px;
 }
 
 button {
-  background-color: #2e7d32; /* Verde oscuro para el botón del formulario */
+  background-color: #0c0c0c; /* Verde oscuro para el botón del formulario */
   color: #fff;
   cursor: pointer;
 }
 
-button:hover {
-  background-color: #4caf50; /* Verde más claro para el estado hover del botón */
-}
 
 .profile-info {
   text-align: center;

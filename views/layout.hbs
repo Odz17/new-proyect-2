@@ -14,20 +14,24 @@
         <h1>Travelers Blog</h1>
     </header>
 
-   <nav>
-  <a href="/">Home</a>
-  <a href="/places/create">Create a Place</a>
-  <a href="/places/list">List of Places</a>
-
-    {{#if currentUser}}
-    <a href="/myprofile">Profile</a>
-    <a href="/auth/logout" class="logout-btn">Logout</a>
-    {{else}}
-    <a href="/auth/signup">Sign Up</a>
-    <a href="/auth/login">Login</a>
-    {{/if}}
-    
-</nav>
+    <nav>
+        
+        <ul>
+          {{#unless user }}        
+            <a href="/auth/signup">Sign Up</a>
+            <a href="/auth/login">Login</a>
+          {{else}}
+            <a href="/">Home</a>
+            <a href="/myprofile">Profile</a>
+            <a href="/places/create">Create a Place</a>
+            <a href="/places/list">List of Places</a>
+            <a href="/auth/logout" class="logout-btn">Logout</a>
+          {{/unless}}
+          
+          
+        
+        
+    </nav>
 
     {{!-- <div class="container">
         <!-- Contenido de la página -->
