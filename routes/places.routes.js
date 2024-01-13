@@ -4,7 +4,7 @@ const { model } = require("mongoose");
 const Place = require('../models/Place.model');
 const fileUploader = require('../config/cloudinary.config');
 const isLoggedIn = require("../middleware/isLoggedIn");
-const sec = require("../middleware/security");
+
 
 router.get('/list', isLoggedIn, (req, res) => {
   Place.find().then(data => {
